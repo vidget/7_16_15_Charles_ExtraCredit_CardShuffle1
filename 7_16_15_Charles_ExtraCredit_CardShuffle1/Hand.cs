@@ -11,14 +11,6 @@ namespace _7_16_15_ExperIT_Charles_ExtraCredit_1
 
     class Hand
     {
-        List<string> userHand = new List<string>();
-
-        //create a INT array that holds a deck of 52 cards (1 = card in deck, 0 = card already drawn)
-       
-        int[] deck = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                           1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-                           1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-
         //currently not needed for single user, but will use when multiplayer
         public string card1 { get; set; }
         public string card2 { get; set; }
@@ -105,7 +97,7 @@ namespace _7_16_15_ExperIT_Charles_ExtraCredit_1
         }
 
 
-        public void addCardtoHand(int cardNumber)// List<string> userHand)
+        public void addCardtoHand(int cardNumber, List<string> userHand)
         {
             userHand.Add(cards[cardNumber]);
         }
@@ -121,12 +113,12 @@ namespace _7_16_15_ExperIT_Charles_ExtraCredit_1
 
         }
 
-        public void removeCard(int userCard)//removes the card the user drew from the deck by setting the value of the deck array from 1 to 0
+        public void removeCard(int[] deck, int userCard)//removes the card the user drew from the deck by setting the value of the deck array from 1 to 0
         {
             deck[userCard] = 0;
         }
 
-        public void displayHand()//(List<string> userHand)//displays all the strings stored in the userHand list
+        public void displayHand(List<string> userHand)//displays all the strings stored in the userHand list
         {
             Console.WriteLine("\n Your Hand:\n");
 
@@ -139,7 +131,7 @@ namespace _7_16_15_ExperIT_Charles_ExtraCredit_1
 
         }
 
-        public bool checkIfAvailableCard(int tempCard)//checks to see if the deck array contains a 1 or 0 taken or not, returns a BOOL
+        public bool checkIfAvailableCard(int[] deck, int tempCard)//checks to see if the deck array contains a 1 or 0 taken or not, returns a BOOL
         {
             if (deck[tempCard] == 1)
                 return false;//card is taken
